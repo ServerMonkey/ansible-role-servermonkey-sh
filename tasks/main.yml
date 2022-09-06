@@ -1,0 +1,16 @@
+---
+- name: Check for autoroot
+  connection: local
+  shell: |
+    if grep -q '#autoroot' <'{{ sh_script_path }}{{ sh }}'; then
+      echo root
+    else
+      echo user
+    fi
+  register: runasroot
+  changed_when: false
+  run_once: true
+  become: false
+
+- name: Run script as root
+  include_tasks: script_as_{{ runasroot.stdout }}.yml
