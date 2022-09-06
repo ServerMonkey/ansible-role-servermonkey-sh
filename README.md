@@ -6,7 +6,7 @@ A different way to run shellscripts as Ansible task.
 
 Automatically detects if you want to run a script as root.  
 Just add the line '#autoroot' into your scripts header and Ansible will always execute the script as root / become user.  
-No need to run ansible schellscripts with "become: true"
+No need to run ansible shellscripts with "become: true"
 
 Example script:
 
