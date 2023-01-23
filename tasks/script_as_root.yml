@@ -5,9 +5,22 @@
   changed_when: servermonkey_sh_shell.stdout != ""
   become: true
 
+- debug:
+    msg: |
+      RC : {{ servermonkey_sh_shell.rc }}
+      OUT: {{ servermonkey_sh_shell.stdout }}
+      ERR: {{ servermonkey_sh_shell.stderr }}
+  when: servermonkey_debug
+
+- name: Fail on errors
+  fail:
+    msg: "Script failed"
+  when: '"ww script failed" in servermonkey_sh_shell.stderr'
+
 - name: Log script
   include_role: name=servermonkey.ww_logger
   vars:
     ww_log: '{{ servermonkey_sh_shell }}'
     ww_logfile: '{{ ansible_parent_role_names[1] }}_{{ sh | basename }}{{ sh_arg }}'
+    ww_nolog: '{{ sh_nolog }}'
   when: servermonkey_sh_shell.changed

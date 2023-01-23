@@ -1,3 +1,5 @@
+servermonkey_debug: false
 sh_script_path: ""
 sh_root: false
 sh_arg: ""
+sh_nolog: false
