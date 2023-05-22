@@ -1,5 +1,4 @@
-servermonkey_debug: false
-sh_script_path: ""
-sh_root: false
-sh_arg: ""
-sh_nolog: false
+servermonkey_debug: false  # for devs only
+sh_script_path: ""  # path to script
+sh_arg: ""  # script parameters
+sh_nolog: false  # if true, will not write any log files
