@@ -1,4 +1,18 @@
 ---
+- name: Find script
+  connection: local
+  vars:
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+  stat:
+    path: "{{ sh_script_path }}{{ sh }}"
+  register: servermonkey_sh_shell_script_path
+  become: false
+
+- name: Check that script exists
+  fail:
+    msg: "Failed to find script in {{ sh_script_path }}{{ sh }}"
+  when: not servermonkey_sh_shell_script_path.stat.exists
+
 - name: Check for autoroot
   connection: local
   vars:
