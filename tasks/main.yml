@@ -29,4 +29,4 @@
   become: false
 
 - name: Run script as root
-  include_tasks: script_as_{{ runasroot.stdout }}.yml
+  include_tasks: script_as_{{ runasroot.stdout | string }}.yml

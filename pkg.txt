@@ -1,2 +1,2 @@
-Version: 0.15
+Version: 0.20
 Description: Run shellscripts as Ansible task

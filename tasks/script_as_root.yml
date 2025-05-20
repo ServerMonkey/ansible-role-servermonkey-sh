@@ -20,7 +20,7 @@
 - name: Log script
   include_role: name=servermonkey.ww_logger
   vars:
-    ww_log: '{{ servermonkey_sh_shell }}'
-    ww_logfile: '{{ ansible_parent_role_names[1] }}_{{ sh | basename }}{{ sh_arg }}'
+    ww_msg: '{{ servermonkey_sh_shell.stdout }}'
+    ww_logfile: '{{ ansible_parent_role_names[1] }}_{{ sh | basename }}_{{ sh_arg | to_uuid }}'
     ww_nolog: '{{ sh_nolog }}'
   when: servermonkey_sh_shell.changed
